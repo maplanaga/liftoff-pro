@@ -1,3 +1,7 @@
+A standalone mode for Launchpad Pro based on the open firmware. My ultimate end goal would be to have it behave mostly like it does with ableton but without a computer (and just for midi ofc) + drum and melody sequencing. Right now it does almost nothing.
+
+This repo was cloned from the open firmware release, idk if that was smart or I should make a new one, but find the original README below:
+
 # Launchpad Pro
 Open source firmware for the Novation Launchpad Pro grid controller!  By customising this code, you can:
 
