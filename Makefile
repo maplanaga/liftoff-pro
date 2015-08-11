@@ -2,7 +2,7 @@ BUILDDIR = build
 
 TOOLS = tools
 
-SOURCES += src/app.c
+SOURCES += $(wildcard src/*.c)
 
 INCLUDES += -Iinclude -I
 
