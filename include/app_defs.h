@@ -119,4 +119,22 @@ typedef unsigned char  u8;
 #define SCALE_MAJOR  0
 #define SCALE_MINOR  1
 
+#define BUTTON_UP        91
+#define BUTTON_DOWN      92
+#define BUTTON_LEFT      93
+#define BUTTON_RIGHT     94
+#define BUTTON_SESSION   95
+#define BUTTON_NOTE      96
+#define BUTOTN_DEVICE    97
+#define BUTTON_USER      98
+
+#define BUTTON_SHIFT     80
+#define BUTTON_CLICK     70
+#define BUTTON_UNDO      60
+#define BUTTON_DELETE    50
+#define BUTTON_QUANTIZE  40
+#define BUTTON_DUPLICATE 30
+#define BUTTON_DOUBLE    20
+#define BUTOTN_RECORD    10
+
 #endif

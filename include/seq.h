@@ -7,5 +7,6 @@
 
 void seqSurfaceEventHandler(u8 type, u8 index, u8 value);
 void seqTimerEventHandler();
+void seqInit();
 
 #endif

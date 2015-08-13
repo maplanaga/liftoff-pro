@@ -9,10 +9,10 @@ void displaySetActiveBuffer(u8 buffer) {
   activeBuffer = buffer;
   for (u8 i = 0; i < 95; i++) {
     u32 color = buffers[activeBuffer][i];
-    hal_plot_led(TYPEPAD, i, (color >> 16) & 0xff, (color >> 8) & 0xff, (color >> 0) & 0xff);
+    writeLed(i, color);
   }
   for(u8 i = 95; i <= 98; i++) {
-    hal_plot_led(TYPEPAD, i, 0, 0, 0);
+    writeLed(i, C_OFF);
   }
   switch (buffer) {
     case MODE_SESSION : writeLed(95, C_SESSION); break;

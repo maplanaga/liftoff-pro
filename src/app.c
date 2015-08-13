@@ -169,4 +169,5 @@ void app_init()
 		}
 	}
 	performInit();
+	seqInit();
 }
