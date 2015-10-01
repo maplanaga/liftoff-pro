@@ -40,6 +40,12 @@
 // ____________________________________________________________________________
 //
 #include "app_defs.h"
+#include "mode.h"
+#include "session.h"
+#include "perform.h"
+#include "seq.h"
+#include "device.h"
+#include "user.h"
 
 /******************************************************************************
  Button indexing is as follows - numbers in brackets do not correspond to real
@@ -159,6 +165,14 @@ void app_surface_event(u8 type, u8 index, u8 value);
  * @param value - the aftertouch value in [0, 127]
  */
 void app_aftertouch_event(u8 index, u8 value);
+
+void app_pad_event(u8 index, u8 value);
+
+void app_button_event(u8 index, bool value);
+
+void app_setup_event(bool value);
+
+void app_clipchange_event();
 
 
 #endif

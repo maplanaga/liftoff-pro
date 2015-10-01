@@ -6,6 +6,11 @@
 
 void displaySetActiveBuffer(u8 buffer);
 
-void displaySetLed(u8 buffer, u8 index, u32 color);
+void displaySetLed(u8 index, u32 color);
+void displaySetPad(u8 buffer, u8 index, u32 color);
+void displaySetButton(u8 index, u32 color);
+void displayClearPads(u8 buffer);
+void displaySetPadXY(u8 buffer, u8 column, u8 row, u32 color);
+u32 displayGetRandomColor();
 
 #endif

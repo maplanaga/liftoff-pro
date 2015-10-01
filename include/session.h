@@ -3,9 +3,13 @@
 
 #include "app_defs.h"
 #include "display.h"
+#include "core.h"
 
-void sessionSurfaceEventHandler(u8 type, u8 index, u8 value);
-void sessionSetForeground();
-void sessionSetBackground();
+void sessionInit();
+void sessionPadEventHandler(u8 index, u8 value);
+void sessionButtonEventHandler(u8 index, bool value);
+
+u8 sessionGetSelectedChannel();
+u8 sessionGetSelectedPattern();
 
 #endif

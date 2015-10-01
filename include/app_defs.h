@@ -112,12 +112,14 @@ typedef unsigned char  u8;
 #define MODE_SEQ     2
 #define MODE_DEVICE  3
 #define MODE_USER    4
+#define MODE_OVERLAY 5
+#define MODE_SETUP   6
 
-#define NUM_MODES    5
+#define NUM_MODES    7
 #define NUM_BUTTONS  100
-
-#define SCALE_MAJOR  0
-#define SCALE_MINOR  1
+#define NUM_CHANNELS 4
+#define NUM_STEPS    64
+#define NUM_POLYPHONY 4
 
 #define BUTTON_UP        91
 #define BUTTON_DOWN      92
@@ -135,6 +137,48 @@ typedef unsigned char  u8;
 #define BUTTON_QUANTIZE  40
 #define BUTTON_DUPLICATE 30
 #define BUTTON_DOUBLE    20
-#define BUTOTN_RECORD    10
+#define BUTTON_RECORD    10
+
+#define BUTTON_RECORD_ARM     1
+#define BUTTON_TRACK_SELECT   2
+#define BUTTON_MUTE           3
+#define BUTTON_SOLO           4
+#define BUTTON_VOLUME         5
+#define BUTTON_PAN            6
+#define BUTTON_SENDS          7
+#define BUTTON_STOP_CLIP      8
+
+#define BUTTON_SCENE_1        89
+#define BUTTON_SCENE_2        79
+#define BUTTON_SCENE_3        69
+#define BUTTON_SCENE_4        59
+#define BUTTON_SCENE_5        49
+#define BUTTON_SCENE_6        39
+#define BUTTON_SCENE_7        29
+#define BUTTON_SCENE_8        19
+
+static const u8 lookupPadToIndex[100] = {
+0    ,  0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   ,  0,
+0    ,  0   , 1   , 2   , 3   , 4   , 5   , 6   , 7   ,  0,
+0    ,  8   , 9   , 10  , 11  , 12  , 13  , 14  , 15  ,  0,
+0    ,  16  , 17  , 18  , 19  , 20  , 21  , 22  , 23  ,  0,
+0    ,  24  , 25  , 26  , 27  , 28  , 29  , 30  , 31  ,  0,
+0    ,  32  , 33  , 34  , 35  , 36  , 37  , 38  , 39  ,  0,
+0    ,  40  , 41  , 42  , 43  , 44  , 45  , 46  , 47  ,  0,
+0    ,  48  , 49  , 50  , 51  , 52  , 53  , 54  , 55  ,  0,
+0    ,  56  , 57  , 58  , 59  , 60  , 61  , 62  , 63  ,  0,
+0    ,  0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   ,  0
+};
+
+static const u8 lookupIndexToPad[64] = {
+11, 12, 13, 14, 15, 16, 17, 18,
+21, 22, 23, 24, 25, 26, 27, 28,
+31, 32, 33, 34, 35, 36, 37, 38,
+41, 42, 43, 44, 45, 46, 47, 48,
+51, 52, 53, 54, 55, 56, 57, 58,
+61, 62, 63, 64, 65, 66, 67, 68,
+71, 72, 73, 74, 75, 76, 77, 78,
+81, 82, 83, 84, 85, 86, 87, 88
+};
 
 #endif

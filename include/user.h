@@ -4,6 +4,8 @@
 #include "app_defs.h"
 #include "display.h"
 
-void userSurfaceEventHandler(u8 type, u8 index, u8 value);
+void userInit();
+void userPadEventHandler(u8 index, u8 value);
+void userButtonEventHandler(u8 index, bool value);
 
 #endif

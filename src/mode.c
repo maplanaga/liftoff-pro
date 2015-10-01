@@ -1,12 +1,13 @@
 #include "mode.h"
 
 u8 currentMode = MODE_SESSION;
+bool overlayActive = false;
 
 void modeHasChangedHandler() {
   displaySetActiveBuffer(currentMode);
 }
 
-void modeSurfaceEventHandler(u8 type, u8 index, u8 value) {
+void modeButtonEventHandler(u8 index, bool value) {
   if(value > 0) {
     if(index == 95) {
       currentMode = MODE_SESSION;
@@ -23,6 +24,21 @@ void modeSurfaceEventHandler(u8 type, u8 index, u8 value) {
   }
 }
 
+void modeOverlayEventHandler(u8 index, bool value) {
+  if(value) {
+    displaySetActiveBuffer(MODE_OVERLAY);
+    overlaySwitch(index);
+    overlayActive = true;
+  } else {
+    displaySetActiveBuffer(currentMode);
+    overlayActive = false;
+  }
+}
+
 u8 modeGetCurrent() {
-  return currentMode;
+  if(!overlayActive) {
+    return currentMode;
+  } else {
+    return MODE_OVERLAY;
+  }
 }

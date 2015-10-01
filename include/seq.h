@@ -5,8 +5,9 @@
 #include "display.h"
 #include "midi.h"
 
-void seqSurfaceEventHandler(u8 type, u8 index, u8 value);
-void seqTimerEventHandler();
 void seqInit();
+void seqPadEventHandler(u8 index, u8 value);
+void seqButtonEventHandler(u8 index, bool value);
+void seqTimerEventHandler();
 
 #endif

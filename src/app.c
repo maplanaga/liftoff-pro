@@ -36,12 +36,6 @@
 //______________________________________________________________________________
 
 #include "app.h"
-#include "mode.h"
-#include "session.h"
-#include "perform.h"
-#include "seq.h"
-#include "device.h"
-#include "user.h"
 
 //______________________________________________________________________________
 //
@@ -55,36 +49,59 @@ void app_surface_event(u8 type, u8 index, u8 value)
 	{
 		case TYPEPAD:
 		{
-  		if(index >= 95 && index <=98) {
-        modeSurfaceEventHandler(type, index, value);
+  		if(index > 10 && index < 90 && index % 10 >= 1 && index % 10 <= 8){
+    		app_pad_event(index, value);
   		} else {
-    		switch(modeGetCurrent()) {
-      		case MODE_SESSION : sessionSurfaceEventHandler(type, index, value); break;
-      		case MODE_PERFORM : performSurfaceEventHandler(type, index, value); break;
-      		case MODE_SEQ     : seqSurfaceEventHandler(type, index, value);     break;
-      		case MODE_DEVICE  : deviceSurfaceEventHandler(type, index, value);  break;
-      		case MODE_USER    : userSurfaceEventHandler(type, index, value);    break;
-    		}
+    		app_button_event(index, value);
   		}
-			// example - light / extinguish pad LEDs, send MIDI
-			// hal_plot_led(TYPEPAD, index, value, value, value);
-			// hal_send_midi(USBSTANDALONE, NOTEON | 0, index, value);
 		}
 		break;
 
 		case TYPESETUP:
 		{
-			// example - light the setup LED
-			//hal_plot_led(TYPESETUP, 0, value, value, value);
+			app_setup_event(value);
 		}
 		break;
 	}
+}
+
+void app_pad_event(u8 index, u8 value) {
+  switch(modeGetCurrent()) {
+    case MODE_SESSION : sessionPadEventHandler(lookupPadToIndex[index], value); break;
+    case MODE_PERFORM : performPadEventHandler(lookupPadToIndex[index], value); break;
+    case MODE_SEQ     : seqPadEventHandler(lookupPadToIndex[index], value);     break;
+    case MODE_DEVICE  : devicePadEventHandler(lookupPadToIndex[index], value);  break;
+    case MODE_USER    : userPadEventHandler(lookupPadToIndex[index], value);    break;
+    case MODE_OVERLAY : overlayPadEventHandler(lookupPadToIndex[index], value); break;
+  }
+}
+
+void app_button_event(u8 index, bool value) {
+  if(index >= 95 && index <=98) {
+    modeButtonEventHandler(index, value);
+  } else if (index < 10) {
+    modeOverlayEventHandler(index, value);
+  } else {
+    switch(modeGetCurrent()) {
+      case MODE_SESSION : sessionButtonEventHandler(index, value); break;
+      case MODE_PERFORM : performButtonEventHandler(index, value); break;
+      case MODE_SEQ     : seqButtonEventHandler(index,     value); break;
+      case MODE_DEVICE  : deviceButtonEventHandler(index,  value); break;
+      case MODE_USER    : userButtonEventHandler(index,    value); break;
+    }
+  }
+}
+
+void app_setup_event(bool value) {
+
 }
 
 //______________________________________________________________________________
 
 void app_midi_event(u8 port, u8 status, u8 d1, u8 d2)
 {
+
+  performMidiInEventHandler(status, d1, d2);
 	// example - MIDI interface functionality for USB "MIDI" port -> DIN port
 	//if (port == USBMIDI)
 	//{
@@ -109,6 +126,7 @@ void app_sysex_event(u8 port, u8 * data, u16 count)
 
 void app_aftertouch_event(u8 index, u8 value)
 {
+  performAftertouchEventHandler(lookupPadToIndex[index], value);
     // example - send poly aftertouch to MIDI ports
 	//hal_send_midi(USBMIDI, POLYAFTERTOUCH | 0, index, value);
 
@@ -136,38 +154,23 @@ void app_cable_event(u8 type, u8 value)
 
 void app_timer_event()
 {
-	// example - send MIDI clock at 125bpm
-	seqTimerEventHandler();
-#define TICK_MS 20
-
-	static u8 ms = TICK_MS;
-
-	if (++ms >= TICK_MS)
-	{
-		ms = 0;
-
-		// send a clock pulse up the USB
-		hal_send_midi(USBSTANDALONE, MIDITIMINGCLOCK, 0, 0);
-	}
-
+	coreTimerEventHandler();
 }
 
 //______________________________________________________________________________
 
 void app_init()
 {
-    // example - light the LEDs to say hello!
-	for (int i=0; i < 10; ++i)
-	{
-		for (int j=0; j < 10; ++j)
-		{
-			u8 r = i < 5 ? (MAXLED * (5-i))/5 : 0;
-			u8 g = i < 5 ? (MAXLED * i)/5 : (MAXLED * (10-i))/5;
-			u8 b = i < 5 ? 0 : (MAXLED * (i-5))/5;
-
-			hal_plot_led(TYPEPAD, j*10 + i, r, b, g);
-		}
-	}
+  displaySetActiveBuffer(MODE_SESSION);
+  coreInit();
+	sessionInit();
 	performInit();
 	seqInit();
+	deviceInit();
+	userInit();
+	overlayInit();
+}
+
+void app_clipchange_event() {
+  performInit();
 }

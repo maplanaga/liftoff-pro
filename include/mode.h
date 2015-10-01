@@ -4,7 +4,8 @@
 #include "app_defs.h"
 #include "display.h"
 
-void modeSurfaceEventHandler(u8 type, u8 index, u8 value);
+void modeButtonEventHandler(u8 index, bool value);
+void modeOverlayEventHandler(u8 index, bool value);
 
 u8 modeGetCurrent();
 
