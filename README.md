@@ -23,9 +23,11 @@ Custom firmware for Launchpad Pro controller that aims to enable a nice standalo
 - tap tempo, sync to external, set tempo manually
 - Documentation: I'm literally the worst
 
-# Building
+# Getting Started
 
-This repository includes the stuff needed to build the firmware from [https://github.com/dvhdr/launchpad-pro](https://github.com/dvhdr/launchpad-pro) The instructions below are taken from the original release.
+A compiled .syx version can be found in the release folder. Skip to 'Uploading to a Launchpad Pro' to find out how to install it.
+
+This repository includes the stuff needed to build the firmware from [https://github.com/dvhdr/launchpad-pro](https://github.com/dvhdr/launchpad-pro). The instructions below are taken from the original release.
 
 # Installation
 This project uses [Vagrant](https://www.vagrantup.com/) to manage the build environment. As such, you need to:
