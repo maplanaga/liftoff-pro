@@ -35,3 +35,16 @@
 build
 .project
 .cproject
+
+*.xcworkspacedata
+
+*.xccheckout
+
+*.xcuserstate
+
+*.xcscheme
+
+tools/osx/simulator.xcodeproj/xcuserdata/davehodder.xcuserdatad/xcschemes/xcschememanagement.plist
+
+*.xcbkptlist
+tools/osx/simulator.xcodeproj/xcuserdata
