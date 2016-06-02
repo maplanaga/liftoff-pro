@@ -1,6 +1,10 @@
+Warrning: I returned my LP Pro, so unless I buy another one at some point this project can be considered abandoned. Maybe check out [what others are doing with the custom firmware](https://github.com/dvhdr/launchpad-pro/network).
+
 # Liftoff Pro
 
-Custom firmware for Launchpad Pro controller that aims to enable a nice standalone workflow, similar to how the device works with Ableton Live. It has the following features:
+Custom firmware for Launchpad Pro controller that aims to enable a nice standalone workflow, similar to how the device works with Ableton Live.
+
+It has the following features:
 
 ## Working:
 
