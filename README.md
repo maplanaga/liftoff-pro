@@ -1,4 +1,4 @@
-Warrning: I returned my LP Pro, so unless I buy another one at some point this project can be considered abandoned. Maybe check out [what others are doing with the custom firmware](https://github.com/dvhdr/launchpad-pro/network).
+Warrning: I returned my LP Pro, so unless I buy another one at some point this project can be considered abandoned. Maybe check out [what others are doing with the custom firmware](https://github.com/dvhdr/launchpad-pro/network). [This one](https://github.com/jrcurtis/subsequencely) looks great.
 
 # Liftoff Pro
 
